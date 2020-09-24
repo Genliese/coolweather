@@ -1,11 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        signg {
+            storeFile file(KEY_PATH)
+            storePassword STORE_PASS
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASS
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.coolweather.android"
+        applicationId "com.coolweather.android.genliese"
         minSdkVersion 15
         targetSdkVersion 30
         versionCode 1
@@ -18,6 +26,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signg
         }
     }
     compileOptions {
